@@ -29,5 +29,9 @@ int main() {
     // Circle anotherCircle(10.0);
     // anotherCircle = circle;           // Eroare: operatorul de atribuire este dezactivat
 
+    // Demonstrarea apelarii move constructorului default
+    Circle tempCircle(10.0);
+    tempCircle = std::move(circle); // Mutam resursele de la circle in tempCircle
+
     return 0;
 }

@@ -1,9 +1,9 @@
 #include <circle.hpp>
 #include <cmath> // pentru M_PI
 
-// Constructor implicit
+// Destructor
 Circle::~Circle() {
-    std::cout << "Default destructor called\n";
+    std::cout << "Destructor called\n";
 }
 
 // Constructor care initializeaza raza cercului

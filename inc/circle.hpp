@@ -6,7 +6,9 @@
 class Circle {
 public:
     // Destructor
-    ~Circle();   
+    ~Circle();  
+    //Implicit constructor
+    Circle();
     // Constructor care initializeaza raza cercului
     Circle(double radius);
 

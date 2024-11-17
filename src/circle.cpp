@@ -6,6 +6,10 @@ Circle::~Circle() {
     std::cout << "Destructor called\n";
 }
 
+Circle::Circle()
+{
+}
+
 // Constructor care initializeaza raza cercului
 Circle::Circle(double radius) : m_radius(radius) {
     if (m_radius <= 0) {

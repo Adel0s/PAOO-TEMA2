@@ -1,13 +1,14 @@
-#include <circle.hpp>
+#include "circle.hpp"
 #include <cmath> // pentru M_PI
 
 // Destructor
 Circle::~Circle() {
-    std::cout << "Destructor called\n";
+    std::cout << "Destructor called for circle with radius: " << m_radius << "\n";
 }
 
-Circle::Circle()
-{
+// Constructor
+Circle::Circle() : m_radius(1.0) {
+    std::cout << "Default constructor called. Radius set to 1.0\n";
 }
 
 // Constructor care initializeaza raza cercului
@@ -17,6 +18,28 @@ Circle::Circle(double radius) : m_radius(radius) {
         m_radius = 1.0; // Setez raza la 1.0 ca valoare implicita
     }
     std::cout << "Circle initialized with radius: " << m_radius << std::endl;
+}
+
+// Constructor de copiere
+Circle::Circle(const Circle& circle) : m_radius(circle.m_radius) {
+    std::cout << "Copy constructor called. Radius copied: " << m_radius << std::endl;
+}
+
+// Operator de atribuire
+Circle& Circle::operator=(const Circle& circle) {
+    std::cout << "Assignment operator called.\n";
+
+    // Gestionarea atribuirii la sine
+    if (this == &circle) {
+        std::cout << "Self-assignment detected. No changes made.\n";
+        return *this;
+    }
+
+    // Copierea valorilor
+    m_radius = circle.m_radius;
+
+    // Returnarea unei referinte la *this
+    return *this;
 }
 
 // Calcularea ariei cercului

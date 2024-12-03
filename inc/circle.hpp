@@ -26,7 +26,8 @@ public:
     double getRadius() const;
 
 private:
-    double m_radius; // Membru de date pentru raza cercului
+    double m_radius; 
+    double *dynamicData;
 };
 
 #endif // CIRCLE_H

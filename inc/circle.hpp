@@ -12,11 +12,17 @@ public:
     // Constructor care initializeaza raza cercului
     Circle(double radius);
 
-    // Dezactivam constructorul de copiere si operatorul de atribuire
-    // Pentru a arata ca aceste metode se genereaza in mod automat o sa comentez linia construcotrului de copiere(anulez dezactivarea)
-    // In aces caz se genereaza automat constructorul de copiere si voi exemplifica in main.cpp acest lucru
+    // Constructor de copiere
     Circle(const Circle&);
+
+    // Operator de atribuire prin copiere
     Circle& operator=(const Circle&);
+
+    // Constructor de mutare
+    Circle(Circle&&) noexcept;
+
+    // Operator de mutared
+    Circle& operator=(Circle&&) noexcept;
 
     // Metode pentru calculul ariei si diametrului
     double calculateArea() const;

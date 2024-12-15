@@ -27,7 +27,7 @@ Circle::Circle(const Circle& circle) : m_radius(circle.m_radius), dynamicData(ne
     std::cout << "Copy constructor called. Radius copied: " << m_radius << ", dynamic data copied: " << *dynamicData << std::endl;
 }
 
-// Operator de atribuire
+// Operator de atribuire prin copiere
 Circle& Circle::operator=(const Circle& circle) {
     std::cout << "Assignment operator called.\n";
 
@@ -45,6 +45,29 @@ Circle& Circle::operator=(const Circle& circle) {
     dynamicData = new double(*circle.dynamicData); // deep copy
 
     // Returnam referinta la *this
+    return *this;
+}
+
+// Constructor de mutare
+Circle::Circle(Circle&& circle) noexcept : m_radius(circle.m_radius), dynamicData(circle.dynamicData) {
+    circle.dynamicData = nullptr;  // Ne asiguram ca obiectul sursa nu mai detine resursa
+    std::cout << "Move constructor called. Radius moved: " << m_radius << "\n";
+}
+
+// Operator de mutare
+Circle& Circle::operator=(Circle&& circle) noexcept {
+    std::cout << "Move assignment operator called.\n";
+
+    if (this == &circle) {
+        std::cout << "Self-assignment detected. No changes made.\n";
+        return *this;
+    }
+
+    delete dynamicData;  // Eliberam resursa veche
+    m_radius = circle.m_radius;
+    dynamicData = circle.dynamicData;
+    circle.dynamicData = nullptr;  // Obiectul sursa nu mai detine resursa
+
     return *this;
 }
 
